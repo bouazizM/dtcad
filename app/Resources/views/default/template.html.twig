@@ -1,0 +1,17 @@
+<h1>Nom :{{ info.lastname }}</h1>
+<p>Prenom :{{ info.firstname }}</p>
+
+<p>Photo : </p><br>
+
+<p>Adresse :{{ info.adress }} </p><br>
+<div>
+
+</div>
+<p>Télephone :{{ info.phone }} </p><br>
+<div>
+</div>
+
+<input type="button" value="make Pdf CV"
+><a href="{{ path('generate',{'info': info.id  }) }}">make Pdf CV</a>
+        </input>
+

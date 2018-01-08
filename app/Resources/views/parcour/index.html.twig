@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Parcours list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>Datefin</th>
+                <th>Universite</th>
+                <th>Cvid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for parcour in parcours %}
+            <tr>
+                <td><a href="{{ path('parcour_show', { 'id': parcour.id }) }}">{{ parcour.id }}</a></td>
+                <td>{% if parcour.titre %}{{ parcour.titre|date('Y-m-d') }}{% endif %}</td>
+                <td>{% if parcour.dateFin %}{{ parcour.dateFin|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ parcour.universite }}</td>
+                <td>{{ parcour.cvId }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('parcour_show', { 'id': parcour.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('parcour_edit', { 'id': parcour.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('parcour_new') }}">Create a new parcour</a>
+        </li>
+    </ul>
+{% endblock %}

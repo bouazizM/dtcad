@@ -1,0 +1,125 @@
+<!-- BEGIN REGISTRATION FORM -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script language="JavaScript" src="https://code.jquery.com/jquery-1.12.4.js" type="text/javascript"></script>
+
+
+<link rel="stylesheet" type="text/css" href="{{ asset('template/css/bootstrap.min.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('template/css/dataTables.bootstrap.min.css')}}" />
+<link rel="stylesheet" type="text/css" href="{{ asset('template/css/responsive.bootstrap.min.css')}}" />
+
+
+
+<!-- END REGISTRATION FORM -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/css/bootstrap.css') }}">
+
+    <!-- Website CSS style -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('template/css/main.css') }}">
+
+    <!-- Website Font style -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
+    <!-- Google Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+
+    <title>Inscription</title>
+</head>
+<body>
+<div class="container">
+    <div class="row main">
+        <div class="panel-heading">
+            <div class="panel-title text-center">
+                <h1 class="title">Inscription </h1>
+                <hr />
+            </div>
+        </div>
+        <div class="main-login main-center">
+            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+                <div class="form-group">
+                    <label for="name" class="cols-sm-2 control-label">Your Name</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.username, { 'attr': {'class': 'form-control placeholder-no-fix', 'placeholder':'User Name'} }) }}
+                            {% for errorItem in form.username.vars.errors %}
+                                <span class="help-inline">{{ errorItem.message }}</span>
+                            {% endfor %}                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email" class="cols-sm-2 control-label">Your Email</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+                            {{ form_widget(form.email, { 'attr': {'class': 'form-control', 'placeholder':'E-mail'} }) }}
+                            {% for errorItem in form.email.vars.errors %}
+                                <span class="help-inline">{{ errorItem.message }}</span>
+                            {% endfor %}                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="username" class="cols-sm-2 control-label">Username</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
+                            Role :
+                            <div class="form-group">
+                                <SELECT name="role" size="1" id="role">
+                                    <OPTION>Administrateur
+                                    <OPTION>Commerciale
+                                    <OPTION>Consultant
+
+                                </SELECT>                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="password" class="cols-sm-2 control-label">Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            {{ form_widget(form.plainPassword.first, { 'attr': {'class': 'form-control', 'placeholder':'Password'} }) }}
+                            {% for errorItem in form.plainPassword.first.vars.errors %}
+                                <span class="help-inline">{{ errorItem.message }}</span>
+                            {% endfor %}                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm" class="cols-sm-2 control-label">Confirm Password</label>
+                    <div class="cols-sm-10">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+                            {{ form_widget(form.plainPassword.second, { 'attr': {'class': 'form-control', 'placeholder':'Repeat Password'} }) }}
+                            {% for errorItem in form.plainPassword.second.vars.errors %}
+                                <span class="help-inline">{{ errorItem.message }}</span>
+                            {% endfor %}                        </div>
+                    </div>
+                </div>
+
+                    <div class="form-actions">
+                        <a class="btn btn-default" href="{{ path('fos_user_security_login') }}">Back to login</a>
+                        <button type="submit" id="register-submit-btn" class="btn btn-success">Submit</button>
+                    </div>
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
+
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="{{ asset('template/js/bootstrap.js') }}"></script>
+</div>
+</body>
+</html>

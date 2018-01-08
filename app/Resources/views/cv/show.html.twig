@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cv</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ cv.id }}</td>
+            </tr>
+            <tr>
+                <th>Lastname</th>
+                <td>{{ cv.lastname }}</td>
+            </tr>
+            <tr>
+                <th>Firstname</th>
+                <td>{{ cv.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Datenaiss</th>
+                <td>{% if cv.dateNaiss %}{{ cv.dateNaiss|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Addr</th>
+                <td>{{ cv.addr }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ cv.phone }}</td>
+            </tr>
+            <tr>
+                <th>Userid</th>
+                <td>{{ cv.userId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cv_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('cv_edit', { 'id': cv.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Cvs list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Lastname</th>
+                <th>Firstname</th>
+                <th>Datenaiss</th>
+                <th>Addr</th>
+                <th>Phone</th>
+                <th>Userid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for cv in cvs %}
+            <tr>
+                <td><a href="{{ path('cv_show', { 'id': cv.id }) }}">{{ cv.id }}</a></td>
+                <td>{{ cv.lastname }}</td>
+                <td>{{ cv.firstname }}</td>
+                <td>{% if cv.dateNaiss %}{{ cv.dateNaiss|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ cv.addr }}</td>
+                <td>{{ cv.phone }}</td>
+                <td>{{ cv.userId }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('cv_show', { 'id': cv.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cv_edit', { 'id': cv.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('cv_new') }}">Create a new cv</a>
+        </li>
+    </ul>
+{% endblock %}

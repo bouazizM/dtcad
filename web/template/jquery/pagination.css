@@ -1,0 +1,94 @@
+@brand-info: #337ab7;
+
+hr { padding: 20px, 0;}
+
+.container-fluid {margin: 20px;}
+
+// Previous and Next button overwrites (shared styles)
+.dropdown_pager .pagination li.previous a,
+.dropdown_pager .pagination li.next a {
+    // hide Previous / Next text
+    text-indent: 100%;
+	  white-space: nowrap;
+	  overflow: hidden;
+    position: relative;
+    width: 25px;
+
+    // Prepare to replace with font awesome icons
+    &:after {
+        position: absolute;
+	      top: 6px;
+	      right: 10px;
+	      font-family: FontAwesome;
+    }
+}
+// styles specific to the previous button
+.dropdown_pager .pagination li.previous a {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius:  20px;
+    &:after {
+        content: "\f104";
+    }
+}
+// styles specific to the next button
+.dropdown_pager li.next a {
+    border-top-right-radius: 20px;
+    border-bottom-right-radius:  20px;
+    &:after {
+        content: "\f105";
+    }
+}
+
+// Sorting Icons
+table.dataTable thead .sorting,
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+  background-repeat: no-repeat;
+  position: relative;
+  &:after {
+      font: normal normal normal 14px/1 FontAwesome;
+      font-size: inherit;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transform: translate(0, 0);
+
+      position: absolute;
+      right: 6px;
+      top: 11px;
+  }
+}
+
+table.dataTable thead .sorting {
+  background-image: none;
+  &:after {
+      content: "\f0dc";
+  }
+  .sorting_asc, .sorting_desc {
+      opacity: 1;
+  }
+}
+table.dataTable thead .sorting_asc,
+table.dataTable thead .sorting_asc_disabled {
+  background-image: none;
+  &:after {
+      content: "\f0de";
+      color: @brand-info;
+  }
+}
+table.dataTable thead .sorting_desc,
+table.dataTable thead .sorting_desc_disabled {
+  background-image: none;
+  &:after {
+      content: "\f0dd";
+      color: @brand-info;
+  }
+}
+table.dataTable thead .sorting_asc_disabled,
+table.dataTable thead .sorting_desc_disabled {
+  &:after {
+      opacity: 0.4;
+  }
+}

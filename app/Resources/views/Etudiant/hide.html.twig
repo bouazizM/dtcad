@@ -1,0 +1,44 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Courbe</title>
+
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<script src="{{ asset('hightcharts/code/highcharts.js') }}"></script>
+<script src="{{ asset('hightcharts/code/modules/exporting.js')}}"></script>
+
+<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+
+<script type="text/javascript">
+
+    Highcharts.chart('container', {
+        chart: {
+            type: 'area'
+        },
+        title: {
+            text: 'Courbe'
+        },
+        xAxis: {
+            categories: ['Apples', 'Oranges', 'Pears', 'Grapes', 'Bananas']
+        },
+        credits: {
+            enabled: false
+        },
+        series: [{% for item in places %}
+
+            {
+                name: '{{ item.firstName }}',
+                data: [0,{{ item.id }},{{ item.id }},10]
+            },
+            {% endfor %}]
+    });
+</script>
+</body>
+</html>

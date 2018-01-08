@@ -1,0 +1,16 @@
+AppBundle\Entity\Etudiant:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+    properties:
+        firstname:
+            - NotBlank: ~
+            - Type: string
+        lastname:
+            - NotBlank: ~
+            - Type: string
+            - Length:
+                 min: 4
+                 max: 50
+        email:
+            - NotBlank: ~
+            - Email: ~

@@ -1,0 +1,15 @@
+{% if is_granted('ROLE_administrateur') %}
+Administrateur
+Consultant
+Commerciale
+{% endif %}
+
+{% if is_granted('ROLE_commerciale') %}
+    Commerciale
+{% endif %}
+
+{% if is_granted('ROLE_consultant') %}
+
+    Consultant
+
+{% endif %}

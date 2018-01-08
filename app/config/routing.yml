@@ -1,0 +1,14 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+sandbox_homepage:
+    path:     /
+    defaults: { _controller: sandboxBundle:Default:index }
+
+sandbox_pdfexample:
+    path:     /pdf-example
+    defaults: { _controller: sandboxBundle:Default:pdf }
